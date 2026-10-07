@@ -4,7 +4,6 @@ from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import HumanMessage, AIMessage
 from dotenv import load_dotenv
 import os
-
 load_dotenv()
 
 # Page config
@@ -25,11 +24,8 @@ if "messages" not in st.session_state:
 # Setup LLM and chain
 @st.cache_resource
 def get_chain():
-    llm = ChatGroq(
-        api_key=os.getenv("GROQ_API_KEY"),
-        model="openai/gpt-oss-120b",
-        temperature=0.7
-    )
+    api_key = os.getenv("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY", "")
+    llm = ChatGroq(api_key=api_key, model="openai/gpt-oss-120b", temperature=0.7)
     prompt = ChatPromptTemplate.from_messages([
         ("system", """You are a helpful AI assistant.
 Keep responses concise — under 5 sentences.
