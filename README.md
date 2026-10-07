@@ -9,7 +9,7 @@ Remembers context across messages while staying within token limits.
 - Memory command to view conversation history
 - Handles empty input and edge cases gracefully
 
-## How to run
+## How to run (Terminal version)
 
 1. Install dependencies:
    pip install langchain langchain-groq python-dotenv
@@ -24,6 +24,10 @@ Remembers context across messages while staying within token limits.
 - Type anything to chat
 - 'memory' to see conversation history
 - 'quit' to exit
+
+## Web Interface
+Run the Streamlit UI:
+c:\python314\python.exe -m streamlit run app.py
 
 ## Author
 Built by Anushka as part of an AI development learning journey.
